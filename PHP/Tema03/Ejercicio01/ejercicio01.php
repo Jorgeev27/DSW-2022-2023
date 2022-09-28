@@ -1,3 +1,4 @@
+<?php declare(strict_types=1); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,24 +15,25 @@
     1 - Programa que reciba por "GET" número de filas (f) 
     y número de columnas (c) y muestre formulario para 
     pedir 2 matrices de fxc y que al enviar los datos 
-    muestre la suma de ambas (ampliar para el producto de matrices)ç
+    muestre la suma de ambas (ampliar para el producto de matrices)
 
     */
 
-    $filas = $_GET['f'];
-    $cols = $_GET["c"];
+        $filas = intval($_GET['f']);
+        $cols = intval($_GET["c"]);
 
-    function ponerMatrices($nombreArray){
-        for($f = 0; $f < $filas; $f++){
-            echo "<tr>\n";
-            for($c = 0; $c < $cols; $c++){
-                echo "<td>\n";
-                echo "<input type='number' name='a[$f][]' size='5'>";
-                echo "</td>\n";
+        function ponerMatrices(string $nombreArray, int $filas, int $cols){
+            for($f = 0; $f < $filas; $f++){
+                echo "<tr>\n";
+                for($c = 0; $c < $cols; $c++){
+                    $valor = $f * $cols + $c;
+                    echo "<td>\n";
+                    echo "<input type='number' name='$nombreArray","[$f][]' size='5' value='$valor'>";
+                    echo "</td>\n";
+                }
+                echo "</tr>\n";
             }
-            echo "</tr>\n";
         }
-    }
 
     ?>
     
@@ -42,23 +44,25 @@
                     <table border="1">
                         <caption>A</caption>
                         <?php
-                        matrices("a");
+                        ponerMatrices("a", $filas, $cols);
                         ?>
                     </table>
                 </td>
                 <td>
-                    <table>
+                    <table border="1">
                     <caption>B</caption>
                     <?php
-                        matrices("b");
+                        ponerMatrices("b", $filas, $cols);
                     ?>
-                    </table border="1">
+                    </table>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="submit" value="Enviar">
-                    <input type="reset" value="Reiniciar">
+                    <button type="submit" value="Enviar">Enviar</button>
+                </td>
+                <td>
+                    <button type="reset" value="Reiniciar">Reiniciar</button>
                 </td>
             </tr>
         </table>
