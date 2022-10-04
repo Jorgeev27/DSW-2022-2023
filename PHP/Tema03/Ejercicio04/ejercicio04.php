@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 02_Jorge Escobar</title>
+    <title>Ejercicio 04_Jorge Escobar</title>
 </head>
 <body>
     <?php
 
     /*
-    2. Programa que muestre en una <table> los seis números ordenados 
-    de un sorteo de laprimitiva (números aleatorios entre [1,49]). 
-    Mostrar la fecha y la hora del sorteo.
+    
+    4. Lo mismo que el ejercicio 2, pero mostrando los números 
+    con las imágenes del ejercicio anterior.
 
     */
 
@@ -37,7 +37,7 @@
         echo "<table>\n";
         echo "<tr>\n";
         foreach($primitivaSorteo as $valor){
-            echo "<td>$valor</td>";
+            echo "<td><img src='../../img/imgNumeros/",$valor,".png'</td>";
         }
         echo "</tr>\n";
         echo "</table>";
