@@ -1,9 +1,8 @@
-<?php declare(strict_types=1); ?>
+<?php declare(strict_types = 1); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 01_Jorge Escobar</title>
     <style>
@@ -25,7 +24,7 @@
             echo "<table>\n";
             echo "<caption>$caption</caption>\n";
             foreach($a as $fila){
-                echo "<tr>\n";
+                echo "<tr>";
                 foreach($fila as $celda){
                     echo "<td>$celda</td>";
                 }
@@ -34,8 +33,8 @@
             echo "</table>";
         }
 
-        $a = intval($_POST['a']);
-        $b = intval($_POST['b']);
+        $a = $_POST['a'];
+        $b = $_POST['b'];
 
         for($i = 0; $i < sizeof($a); $i++){
             for($j = 0; $j < sizeof($a[$i]); $j++){
