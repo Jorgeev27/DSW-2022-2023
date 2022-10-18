@@ -1,0 +1,15 @@
+.blanco{
+    background-color: white;
+}
+.negro{
+    background-color: black;
+}
+
+.marcado{
+    background-color: red;
+}
+
+td ,th{
+    width: 75px;
+    height: 75px;
+}
