@@ -3,4 +3,5 @@ function chequearDatos(){
     const pass2 = document.forms['formAlta'].pass2.value;
     //const pass = document.getElementById('pass');
     //const pass2 = document.getElementById('pass');
+    return pass == pass2;
 }
