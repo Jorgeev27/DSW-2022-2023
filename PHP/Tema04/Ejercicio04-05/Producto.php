@@ -47,13 +47,11 @@
         }
 
         /**
-         * Permite que una clase decida cómo reaccionará cuando se trate como
-         * una cadena. Este método debe devolver una cadena. 
-         * De lo contrario se emite un error fatal.
-         * @return Producto: representación de cadena del objeto.
+         * Llama cuando el objeto se usa en un contexto de cadena
+         * @return Producto: devuelve el método __toString() del producto.
          */
         function __toString(){
-            return "Producto: $this->id, Nombre: $this->nombre, Precio: $this->precio, Descripcion: $this->descripcion, urlImagen: $this->urlImagen, Stock: $this->stock";
+            return "Producto: ".json_encode($this->atributos, JSON_UNESCAPED_UNICODE);
         }
     }
 ?>
