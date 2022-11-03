@@ -1,10 +1,11 @@
 <?php
     class Producto{
         /* Declarar las propiedades de la clase. */
-        //private $id, $nombre, $precio, $descripcion, $urlImagen, $stock;
+
+        //private $id, $nombre, $precio, $descripcion, $imagen, $stock;
         
         /* Un array asociativo que contiene los atributos de la clase. */
-        private $atributos = ["id"=>0, "Nombre"=>"", "Precio"=>0, "Descripcion"=> "", "urlImagen"=> "", "Stock"=> ""];
+        private $atributos = ["id"=>0, "nombre"=>"", "precio"=>0, "descripcion"=> "", "imagen"=> "", "stock"=> ""];
         
         /**
          * Constructor de la clase Producto.
@@ -12,15 +13,15 @@
          * @param nombre El nombre del producto.
          * @param precio precio del producto
          * @param descripcion La descripción del producto.
-         * @param urlImagen La URL de la imagen del producto.
+         * @param imagen La imagen del producto.
          * @param stock La cantidad de stock disponible para el producto.
          */
-        function __construct($id, $nombre, $precio, $descripcion, $urlImagen, $stock){
+        function __construct(int $id, string $nombre, float $precio, string $descripcion, string $imagen, int $stock){
             $this->id = $id;
             $this->nombre = $nombre;
             $this->precio = $precio;
             $this->descripcion = $descripcion;
-            $this->urlImagen = $urlImagen;
+            $this->imagen = $imagen;
             $this->stock = $stock;
         }
 
@@ -29,7 +30,7 @@
          * @param propiedad El nombre de la propiedad que está intentando establecer.
          * @param valor El valor a establecer.
          */
-        function __set($propiedad, $valor){
+        function __set(string $propiedad, mixed $valor){
             if($propiedad == "id" && $valor < 1){
                 throw new Exception("ERROR!!! El ID no es válido");
             }
@@ -42,7 +43,7 @@
          * @param propiedad El nombre de la propiedad a la que intenta acceder.
          * @return El valor de la propiedad.
          */
-        function __get($propiedad){
+        function __get(string $propiedad){
             return $this->atributos[$propiedad];
         }
 
