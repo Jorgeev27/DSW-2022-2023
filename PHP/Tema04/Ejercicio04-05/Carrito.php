@@ -60,10 +60,35 @@
          */
         function getCosteTotal(): float{
             $total = 0;
-            foreach($this->listaProductos as $id=>$producto){
+            foreach($this->listaProductos as $producto){
                 $total += $producto->precio * $producto->cantidad;
             }
             return $total;
+        }
+
+        /**
+         * Devuelve la lista de productos.
+         * @return lista de productos.
+         */
+        function getListaProductos(){
+            return $this->listaProductos;
+        }
+
+        /**
+         * Toma el contenido del búfer de salida actual, lo almacena en una variable y luego borra el
+         * búfer de salida.
+         * @return Contenido de la matriz listaProductos.
+         */
+        function __toString(){
+            return "Carro: ".json_encode($this->listaProductos. JSON_UNESCAPED_UNICODE);
+            
+            /*
+            ob_start();
+            print_r($this->listaProductos);
+            $content = ob_get_contents();
+            ob_end_clean();
+            return $content;
+            */
         }
     }
 ?>

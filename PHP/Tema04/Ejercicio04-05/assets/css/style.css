@@ -1,0 +1,34 @@
+main{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    justify-items: center;
+}
+
+body{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10vh 85vh 5vh;
+}
+
+footer{
+    text-align: center;
+}
+
+h1,h2{
+    text-decoration: underline;
+}
+
+h1{
+    text-align: center;
+}
+
+div#catalogo, div#carro{
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.producto{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}

@@ -5,7 +5,7 @@
         //private $id, $nombre, $precio, $descripcion, $imagen, $stock;
         
         /* Un array asociativo que contiene los atributos de la clase. */
-        private $atributos = ["id"=>0, "nombre"=>"", "precio"=>0, "descripcion"=> "", "imagen"=> "", "stock"=> ""];
+        private $atributos = ["id"=>0, "nombre"=>"", "precio"=>0, "descripcion"=>"", "imagen"=>"", "stock"=>0];
         
         /**
          * Constructor de la clase Producto.

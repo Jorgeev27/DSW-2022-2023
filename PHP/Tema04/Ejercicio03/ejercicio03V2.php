@@ -88,7 +88,7 @@
                     <label for="email">Email:</label>
                 </td>
                 <td>
-                    <input required="required" type="text" name="email"><br/><br/>
+                    <input required="required" type="email" name="email"><br/><br/>
                 </td>
             </tr>
             <tr>
@@ -104,6 +104,6 @@
     <?php
         }
     ?>
-    <script src="./assets/js/ejercicio01V2.js"></script>
+    <script src="./assets/js/ejercicio03V2.js"></script>
 </body>
 </html>
