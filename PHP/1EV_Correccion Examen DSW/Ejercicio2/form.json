@@ -1,0 +1,24 @@
+{
+        "action":"http://infociclos.rf.gd/PHP/datos.php",
+        "method":"post",
+        "id":"formAltaVideoClub",
+        "enctype":"multipart/form-data",
+        "campos": [
+                {"label":"D.N.I.","elemento":"input","type":"text","maxlength":8,"size":8,"name":"dni","id":"dni","required":"required","pattern":"[1-9][0-9]{1,7}"},
+                {"label":"Letra","elemento":"select","name":"letraDni","id":"letraDni","opciones":["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"]},
+                {"label":"Nombre","elemento":"input","type":"text","maxlength":30,"size":40,"name":"nombre","id":"nombre","required":"required"},
+                {"label":"Apellido1","elemento":"input","type":"text","maxlength":30,"size":40,"name":"ap1","id":"ap1","required":"required"},
+                {"label":"Apellido2","elemento":"input","type":"text","maxlength":30,"size":40,"name":"ap2","id":"ap2"},
+                {"label":"Fecha de Nacimiento","elemento":"input","type":"date","maxlength":10,"size":10,"name":"fechaNac","id":"fechaNac","required":"required"},
+                {"label":"Contraseña","elemento":"input","type":"password","maxlength":12,"size":12,"name":"pass1","id":"pass1","required":"required"},
+                {"label":"Repite Contraseña","elemento":"input","type":"password","maxlength":12,"size":12,"name":"pass2","id":"pass2","required":"required"},
+                {"label":"Dirección","elemento":"input","type":"text","maxlength":50,"size":40,"name":"direc","id":"direc","required":"required"},
+                {"label":"Teléfono","elemento":"input","type":"text","maxlength":9,"size":9,"name":"telef","id":"telef","required":"required","pattern":"[6-9][0-9]{8}"},
+                {"label":"Email","elemento":"input","type":"email","maxlength":35,"size":35,"name":"email","id":"email","required":"required"},
+                {"label":"Observaciones","elemento":"textarea","name":"observaciones","id":"observaciones","rows":8,"cols":60}
+        ],
+        "botones": [
+                {"type":"submit","name":"enviar","id":"enviar","content":"Enviar"},
+                {"type":"reset","name":"resetear","id":"resetear","content":"Borrar Formulario"}
+        ]
+}

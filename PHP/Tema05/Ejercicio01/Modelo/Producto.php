@@ -29,7 +29,7 @@
          * @param mixed valor El valor para establecer el atributo.
          */
         public function __set(string $atributo, mixed $valor){
-            if($atributo=="id" && $valor<0){
+            if($atributo == "id" && $valor < 0){
                 throw new InvalidArgumentException("Error valor no válido para el id");
             }
             $this->atributos[$atributo]=$valor;

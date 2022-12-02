@@ -30,8 +30,8 @@
                 <td><input type='text' size='40' maxlength='40' readonly='readonly' value='$producto->nombre'/></td>
                 <td><input type='number' size='11' maxlength='11' readonly='readonly' value='$producto->precio' step='0.01'/></td>
                 <td><input type='text' size='40' maxlength='40' readonly='readonly' value='$producto-> imagen'/></td>
-                <td><button type='button'>Eliminar</button></td>
-                <td><button type='button' onclick='ponerFilaEditable(\"$producto->id\")'>Modificar</button></td>
+                <td><button type='button' onclick='eliminarProducto(\"$producto->id\")'>Eliminar</button></td>
+                <td><button type='button' onclick='modificarGuardarProducto(\"$producto->id\")'>Modificar</button></td>
             </tr>";
         }
     ?>

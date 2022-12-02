@@ -4,6 +4,7 @@
 
     require_once(__DIR__."/BaseDAO.php");
     require_once(__DIR__."/Producto.php");
+    
     class DAOProducto{
         /**
          * Elimina un producto de la base de datos.
@@ -15,7 +16,7 @@
             return BaseDAO::consulta($sql);
         }
         /**
-         * Modifica el producto.
+         * Modifica el producto de la base de datos.
          * @param Producto producto es el objeto que contiene los datos a modificar.
          * @return bool un valor booleano.
          */

@@ -12,10 +12,10 @@ CREATE TABLE producto (
   precio decimal(8,2),
   imagen varchar(40),
   PRIMARY KEY(id)
-) ENGINE=InnoDB;
-  
+)
+ENGINE=InnoDB;
+
 INSERT INTO producto VALUES
 (1,'Es capaz de escribir más de 10000 páginas con una solo recarga.<br/>En el estuche original vienen 5 recargas.','Pelikan Soruvëran M-1000',545,'pelikan.png'),
 (2,"Es capaz de escribir más de 1000 páginas con una solo recarga.<br/>En el estuche original vienen 2 recargas.",'Parker Duofold International',406,'parker.png'),
 (3,"Es capaz de escribir más de 100 páginas con una solo recarga.<br/>En el estuche original vienen 1 recarga.",'Visconti Van Gogh',180,'visconti.png');
-
