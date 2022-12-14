@@ -1,5 +1,6 @@
 <?php
-    declare(strict_types = 1); 
+    declare(strict_types = 1);
+    require_once("./DAOEquipos.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,51 +10,81 @@
     <title>Examen DSW_ Jorge Escobar</title>
 </head>
 <body>
+    <table>
+    <tr>
+        <th>Posición</th>
+        <th>Equipo</th>
+        <th>Puntos</th>
+    </tr>
     <?php
         /**
-         * Se conecta a la base de datos y, si no puede, sale con un mensaje de error. Si puede,
-         * devuelve el resultado de la consulta.
-         * @param sql La consulta SQL a ejecutar.
-         * @return El resultado de la consulta.
+         * Toma una serie de resultados, dos equipos y una serie de equipos, y devuelve una serie de
+         * equipos con puntos actualizados.
+         * @param array resultado Un array con el resultado del partido.
+         * @param Equipo local el equipo local
+         * @param Equipo visitante El equipo visitante
+         * @param array equiposLiga Un array de objetos de tipo Equipo.
+         * @return array de equipos con los puntos actualizados.
          */
-        function consulta($sql){
-            $conexion = new MySQLi("localhost", "liga", "liga2022", "liga");
-            if($conexion-> error != null){
-                exit("ERROR!! Al conectar con la base de datos.<br/>\n");
+        function sumarPuntaje(array $resultado, Equipo $local, Equipo $visitante, array $equiposLiga){
+            if ($resultado[0] > $resultado[1]) {
+                for ($i=0; $i < count($equiposLiga); $i++) { 
+                    if ($equiposLiga[$i]->id == $local->id) {
+                        $equiposLiga[$i]->puntos += 3;
+                        break;
+                    }
+                }
+            }else if($resultado[0] < $resultado[1]){
+                for ($i=0; $i < count($equiposLiga); $i++) { 
+                    if ($equiposLiga[$i]->id == $visitante->id) {
+                        $equiposLiga[$i]->puntos += 3;
+                        break;
+                    }
+                }
+            }else{
+                for ($i=0; $i < count($equiposLiga); $i++) { 
+                    if($equiposLiga[$i]->id == $local->id || $equiposLiga[$i]->id == $visitante->id) {
+                        $equiposLiga[$i]->puntos += 1;
+                    }
+                }
             }
-            return $conexion ->query($sql);
+            return $equiposLiga;
+        }
+        $equiposLiga = [];
+
+        /* Conseguir el número de equipos de la liga. */
+        $numEquipos = DAOEquipos::numEquipos();
+
+        /* Obtener todos los equipos de la base de datos y almacenarlos en una matriz. */
+        for ($i=1; $i <=  $numEquipos ; $i++) { 
+            $equipo = DAOEquipos::buscarEquipo($i);
+            array_push($equiposLiga,$equipo);
         }
 
-        /**
-         * Devuelve un array de todos los equipos en la base de datos.
-         * @return array Un array de los equipos.
-         */
-        function cargarEquipos():array{
-            $resultado = consulta("SELECT * FROM equipos");
-            $equipos = [];
-            while(($equipo = $resultado->fetch_assoc()) != null){
-                $equipos[$equipo['id']] = $equipo['nombre'];
-            }
-            return $equipos;
+        /* Obtener el número de partidos en la base de datos. */
+        $numPartidos = DAOEquipos::numPartidos();
+
+        /* Iterando a través de todos los partidos en la base de datos y agregando los puntos a los equipos. */
+        for ($i=1; $i <= $numPartidos; $i++) { 
+            $partido = DAOEquipos::buscarPartido($i);
+            $local = DAOEquipos::buscarEquipo($partido->local);
+            $visitante =  DAOEquipos::buscarEquipo($partido->visitante);
+            $resultado = explode("-",$partido->resultado);
+            $equiposLiga =  sumarPuntaje($resultado,$local,$visitante,$equiposLiga);
         }
 
-        /**
-         * Toma los equipos y devuelve los puntos de cada equipo.
-         * @param array equipos con sus puntos.
-         */
-        function inicializarPuntos(array $equipos):array{
-            $puntosEquipos = [];
-            foreach($equipos as $id=>$equipo){
-                $puntosEquipos[$id] = 0;
-            }
-            return $puntosEquipos;
+        /* Ordena la matriz por valor, manteniendo la asociación clave. */
+        asort($equiposLiga);
+
+        /* Impresión de la tabla con los equipos y sus puntos. */
+        for ($i=0; $i < count($equiposLiga); $i++) { 
+            echo "<tr>",
+            "<td>",$i+1,"</td>",
+            "<td>",$equiposLiga[$i]->nombre,"</td>",
+            "<td>",$equiposLiga[$i]->puntos,"</td>"
+            ,"</tr>";
         }
-
-        /* Llamando a la función "cargarEquipos()" y almacenando el resultado en la variable equipos. */
-        $equipos = cargarEquipos();
-
-        /* Llamando a la función "inicializarPuntos()" y almacenando el resultado en la variable puntosEquipos */
-        $puntosEquipos = inicializarPuntos($equipos);
     ?>
+    </table>
 </body>
 </html>
