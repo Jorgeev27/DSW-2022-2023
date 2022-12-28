@@ -2,16 +2,16 @@
     require_once("./Carta.php");
 
     class Baraja{
-        /* Creando un array con los palos de las cartas. */
+        /* Crea un array con los palos de las cartas. */
         private $palos =  ["bastos", "copas", "espadas", "oros"];
-        /* Creando un array con los números de las cartas. */
+        /* Crea un array con los números de las cartas. */
         private $numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        /* Creando un array de la baraja vacía. */
+        /* Crea un array de la baraja vacía. */
         private $baraja = [];
 
         /**
-         * Esta función crea una nueva baraja de cartas.
-         * @param array baraja Esta es el array que contendrá las cartas.
+         * Crea una nueva baraja de cartas.
+         * @param array baraja - Array que contendrá las cartas.
          */
         public function __construct(array $baraja = []){
             $this->baraja = $baraja;
@@ -19,7 +19,7 @@
 
         /**
          * Crea una baraja de cartas con el número de pares de cartas especificado por el usuario.
-         * @param int numParejas número de pares de cartas a crear.
+         * @param int numParejas - Número de pares de cartas a crear.
          */
         public function crearBaraja(int $numParejas){
             if($numParejas <= 48){
