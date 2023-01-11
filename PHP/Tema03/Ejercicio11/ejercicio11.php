@@ -37,7 +37,7 @@
         }
         
         $cartasValor=[4, 11, 0, 10, 0, 0, 0, 0, 0, 0, 2, 3]; //Array del valor de las cartas: desde el rey hasta el caballo
-        $numAleatorio = numerosAleatoriosCartas(1,48); //Genera 10 numeros aleatorios del 1 al 48 inclusives
+        $numAleatorio = numerosAleatoriosCartas(1, 48); //Genera 10 numeros aleatorios del 1 al 48 inclusives
         $puntuacionCarta = 0; //Puntuación de la partida
         foreach($numAleatorio as $carta){ //Foreach a los numeros aleatorios
             if($carta <= 12){ //Si los numeros corresponden del 1 al 12: bastos

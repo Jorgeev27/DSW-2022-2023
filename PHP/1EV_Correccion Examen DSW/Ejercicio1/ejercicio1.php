@@ -11,7 +11,12 @@
 <body>
     <h1>Estadísticas Anuales de las Temperaturas</h1>
     <table>
-        <tr><th>Mes</th><th>Mínima</th><th>Máxima</th><th>Media</th></tr>
+        <tr>
+            <th>Mes</th>
+            <th>Mínima</th>
+            <th>Máxima</th>
+            <th>Media</th>
+        </tr>
     <?php
         /**
          * Lee el contenido del archivo "temperaturas.json" y lo devuelve como un array.
@@ -48,12 +53,12 @@
                 if($min < $minAnio){
                     $minAnio = $min;
                 }
-                if($max < $maxAnio){
+                if($max > $maxAnio){
                     $maxAnio = $max;
                 }
                 echo "<tr><th>",$mes['mes'],"</th><td>$min</td><td>$max</td><td>$media</td></tr>\n";
             }
-            echo "<tr><th>Año completo</th><td>$minAnio</td><td>$maxAnio</td><td>",round($sumaMediaAnio/12, 2),"</td></tr>\n";
+            echo "<tr><th>Año completo</th><td>$minAnio</td><td>$maxAnio</td><td>",round($sumaMediaAnio / 12, 2),"</td></tr>\n";
         }
 
         /* Llamar a la función `insertarDatosEnTabla` con el resultado de la función `obtenerDatos`

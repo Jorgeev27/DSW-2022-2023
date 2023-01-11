@@ -9,16 +9,8 @@
 <body>
     <?php
 
-    /*
-    2. Programa que muestre en una <table> los seis números ordenados 
-    de un sorteo de laprimitiva (números aleatorios entre [1,49]). 
-    Mostrar la fecha y la hora del sorteo.
-
-    */
-
     /**
      * Función que hace el sorteo de los números de la primitiva
-     * 
      */
         function sorteoPrimitiva(){
             $numerosPrimitiva = [];

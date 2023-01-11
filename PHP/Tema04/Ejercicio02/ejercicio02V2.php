@@ -23,7 +23,6 @@
 </head>
 <body>
     <?php
-
         /* Comprobando si el usuario ha visitado la página antes. Si es así, mostrará la fecha de la
         última visita y el número de visitas desde entonces. Si no, mostrará el número de visitas. */
         if(isset($numVisitasTranscurridas)){

@@ -8,19 +8,17 @@
 </head>
 <body>
     <?php
-
-    /*
-    
-    1. Programa que reciba por "GET" número de filas (f) 
-    y número de columnas (c) y muestre formulario para 
-    pedir 2 matrices de fxc y que al enviar los datos 
-    muestre la suma de ambas (ampliar para el producto de matrices)
-
-    */
-
+        /* Obtener los valores de las variables f y c de la URL. */
         $filas = intval($_GET['f']);
         $cols = intval($_GET["c"]);
 
+        /**
+         * Imprime una tabla con un número dado de filas y columnas, y cada celda contiene un campo de
+         * entrada con un nombre dado y un valor que es el producto de los números de fila y columna.
+         * @param string nombreArray El nombre de la matriz que se creará en el formulario.
+         * @param int filas número de filas
+         * @param int cols número de columnas
+         */
         function ponerMatrices(string $nombreArray, int $filas, int $cols){
             for($f = 0; $f < $filas; $f++){
                 echo "<tr>\n";
@@ -33,9 +31,7 @@
                 echo "</tr>\n";
             }
         }
-
     ?>
-    
     <form action="sumaMatrices.php" method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -43,7 +39,8 @@
                     <table border="1">
                         <caption>A</caption>
                         <?php
-                        ponerMatrices("a", $filas, $cols);
+                            /* Llamando a la función `ponerMatrices` con los parámetros `"a"`, `filas` y`cols`. */
+                            ponerMatrices("a", $filas, $cols);
                         ?>
                     </table>
                 </td>
@@ -51,6 +48,7 @@
                     <table border="1">
                     <caption>B</caption>
                     <?php
+                        /* Llamando a la función `ponerMatrices` con los parámetros `"b"`, `filas` y`cols`. */
                         ponerMatrices("b", $filas, $cols);
                     ?>
                     </table>

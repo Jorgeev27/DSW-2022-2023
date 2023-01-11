@@ -1,0 +1,17 @@
+En un videoclub se lleva la compra y/o alquier de una película que se quiere adquirir.
+Para ello, dicha película contiene los siguientes datos de los que se debe conocer:
+
+    idPelicula;
+    nombrePelicula;
+    anio;
+    director;
+    actores;
+    clasificacionPelicula;
+    descripcion;
+    precio;
+    stock;
+
+Dado el script de la base de datos, se desea:
+ - Acceder a la base de datos.
+ - Mostrar todos los datos de la película.
+ - Buscar una película por el id y el director de la misma.
