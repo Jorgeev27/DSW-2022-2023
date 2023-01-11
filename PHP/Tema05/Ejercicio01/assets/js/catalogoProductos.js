@@ -79,3 +79,9 @@ function eliminarProducto(id){
         window.location.reload();
     }
 }
+
+function recargarPagina(){
+    let pag = document.querySelector("#pag").value;
+    let tamPag = document.querySelector("#tamPag").value;
+    document.location="?pag=" + pag + "&tamPag=" + tamPag;
+}

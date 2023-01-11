@@ -89,5 +89,15 @@
         public static function numPags(int $tamPag): int{
             return ceil(DAOProducto::numProductos() / $tamPag);
         }
+
+        /**
+         * *|CURSOR_MARCADOR|*
+         * 
+         * @return int El valor máximo de la columna id en la tabla de productos.
+         */
+        public static function maxNumProducto(): int{
+            $resultado = BaseDAO::consulta("SELECT MAX(id) AS max FROM producto");
+            return intval($resultado->fetch_assoc()['max']);
+        }
     }
 ?>
