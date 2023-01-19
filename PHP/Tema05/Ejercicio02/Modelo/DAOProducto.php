@@ -2,8 +2,8 @@
     /* Importando la clase DAOProducto desde el archivo DAOProducto.php. */
     use DAOProducto as GlobalDAOProducto;
 
-    require_once("./BaseDAO.php");
-    require_once("./Producto.php");
+    require_once(__DIR__."/BaseDAO.php");
+    require_once(__DIR__."/Producto.php");
     
     class DAOProducto{
         /**
@@ -21,13 +21,13 @@
          * @param Producto producto es el nombre de la mesa
          * @return bool El resultado de la consulta.
          */
-        public static function insertarProducto(Producto $producto): bool{
-            if($producto->id == 0){
+        public static function insertarProducto(Producto $prod): bool{
+            if($prod->id == 0){
                 $id = "null";
             }else{
-                $id = $producto->id;
+                $id = $prod->id;
             }
-            $sql = "INSERT INTO producto VALUES ('$id','$producto->descripcion','$producto->nombre',$producto->precio,$producto->imagen)";
+            $sql = "INSERT INTO producto VALUES ('$id','$prod->descripcion','$prod->nombre',$prod->precio,$prod->imagen)";
             return BaseDAO::consulta($sql);
         }
 

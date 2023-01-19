@@ -3,15 +3,18 @@
         /* Una variable estática privada que se utilizará para almacenar el número de filas afectadas
         por la última consulta. */
         private static $lastAffectedRows;
+
         
         /**
-         * Se conecta a la base de datos.
-         * @return La conexión a la base de datos.
+         * Crea un nuevo objeto PDO, que es un objeto PHP que representa una conexión a una base de datos.
+         * El primer parámetro del constructor de PDO es una cadena que contiene el tipo de base de
+         * datos a la que nos estamos conectando y la ubicación de la base de datos.
+         * @return conexión a la base de datos de los productos.
          */
         public static function getConexion(){
-            $conexion = new MySQLi("localhost", "productos", "productos2021", "productos");
+            $conexion = new PDO("sqlite:/var/www/phpdata/productos.sqlite");
             if($conexion->errno != null){
-                throw new Exception("Error conectando a la base de datos de productos: ", $conexion->error);
+                throw new Exception("ERROR!! Al conectar con la base de datos de productos: ", $conexion->error);
             }
             return $conexion;
         }
@@ -29,7 +32,7 @@
                 $conexion->close();
                 return $resultado;
             }catch(Exception $ex){
-                exit("ERROR!! en la consulta");
+                die("ERROR!! en la consulta");
             }
         }
         

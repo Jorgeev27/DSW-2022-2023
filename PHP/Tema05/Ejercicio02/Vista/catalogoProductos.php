@@ -13,7 +13,7 @@
     <h1>Catalogo de Productos - Impresa S.A.</h1>
     <div id="controlPag">
         <label for="pag">Pág:</label>
-        <select onchange="recargarPagina()" id="pag" name="pag" value="<?=$pag;?>">
+        <select onchange="recargarPagina();" id="pag" name="pag">
             <?php
                 /* Creación de un menú desplegable con el número de páginas de los productos. */
                 for($i = 1; $i < $numPaginas; $i++){
@@ -48,6 +48,8 @@
             <th>Imagen</th>
         </tr>
         <?php
+            /* Obtiene la primera página de productos de la base de datos. */
+            $paginaProductos = DAOProducto::getPaginaProducto(1);
             /* Crea una tabla con los productos de la base de datos. */
             foreach($paginaProductos as $producto){
                 echo "<tr id='producto_$producto->id'>
@@ -61,7 +63,7 @@
                 </tr>";
             }
         ?>
-        <form action="Productos/insertar.php" method="post" enctype="multipart/form-data">
+        <form action="Productos/insertar.php" method="POST" enctype="multipart/form-data">
             <tr>
                 <!--<td>
                     <input required name="id" type='text' size='6' maxlength='6' readonly='readonly' value='<?=$siguienteNumero?>;'/>
