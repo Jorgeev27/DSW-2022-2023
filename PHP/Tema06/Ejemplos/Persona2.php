@@ -3,8 +3,8 @@
 
     class Persona2{
         /* Declarar las variables de la clase Persona */
-        private $nombre = "";
-        private $edad = 0;
+        public $nombre = "";
+        public $edad = 0;
 
         /**
          * La función __construct() es una función especial que se llama automáticamente cuando se crea un objeto.
@@ -17,7 +17,7 @@
         }
 
         /**
-         * Se llama al método __toString() cuando el objeto se usa en un contexto de cadena
+         * La función __toString() es un método mágico que devuelve una representación de cadena del objeto.
          * @return Representación de cadena del objeto.
          */
         public function __toString(){
@@ -30,6 +30,15 @@
          */
         public function __clone(){
             return new Persona2($this->nombre, $this->edad);
+        }
+
+        /**
+         * Devuelve el valor del atributo.
+         * @param atributo - El nombre del atributo que desea obtener.
+         * @return Valor del atributo.
+         */
+        public function __get($atributo){
+            return $this->$atributo;
         }
     }
 
