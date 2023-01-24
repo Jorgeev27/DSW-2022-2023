@@ -5,12 +5,12 @@
     /* Establece el número predeterminado de productos por página en 10. */
     $tamPag = 10;
     /* Si la variable pag está configurada, lo mete en el valor de pag al valor de la variable pag. */
-    if(isset($_GET["pag"])){
-        $pag = intval($_GET["pag"]);
+    if(isset($_GET['pag'])){
+        $pag = intval($_GET['pag']);
     }
     /* Si la variable tamPag está configurada, lo mete en el valor de pag al valor de la variable tamPag. */
-    if(isset($_GET["tamPag"])){
-        $tamPag = intval($_GET["tamPag"]);
+    if(isset($_GET['tamPag'])){
+        $tamPag = intval($_GET['tamPag']);
     }
     /* Obtiene el número de páginas que tendrá el catálogo. */
     $numPaginas = DAOProducto::numPags($tamPag);
@@ -22,6 +22,6 @@
     /* Obtiene la página de productos y dichos productos de la base de datos. */
     $paginaProductos = DAOProducto::getPaginaProducto($pag, $tamPag);
     /* Obtiene el siguiente número de producto que se agregará a la base de datos. */
-    $siguienteNumero = DAOProducto::maxNumProducto() + 1;
+    $siguienteNumero = DAOProducto:: maxNumProducto() + 1;
     require_once("../Vista/catalogoProductos.php");
 ?>

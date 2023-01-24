@@ -60,8 +60,8 @@ function eliminarProducto(id){
         form.setAttribute("method", "post");
         form.setAttribute("enctype", "multipart/form-data");
         let input = document.createElement("input");
-        input.setAttribute("name", "id");
-        input.setAttribute("value", id);
+        input.name = id;
+        input.value = id;
         form.appendChild(input);
         fetch(form.action, {body: new FormData(form), method: post})
         .then(respuesta => respuesta.text())
@@ -87,5 +87,5 @@ function eliminarProducto(id){
 function recargarPagina(){
     let pag = document.querySelector("#pag").value;
     let tamPag = document.querySelector("#tamPag").value;
-    document.location="?pag=" + pag + "&tamPag=" + tamPag;
+    document.location = "?pag=" + pag + "&tamPag=" + tamPag;
 }

@@ -21,13 +21,13 @@
          * @param Producto producto es el nombre de la mesa
          * @return bool El resultado de la consulta.
          */
-        public static function insertarProducto(Producto $prod): bool{
-            if($prod->id == 0){
+        public static function insertarProducto(Producto $producto): bool{
+            if($producto->id == 0){
                 $id = "null";
             }else{
-                $id = $prod->id;
+                $id = $producto->id;
             }
-            $sql = "INSERT INTO producto VALUES ('$id','$prod->descripcion','$prod->nombre',$prod->precio,$prod->imagen)";
+            $sql = "INSERT INTO producto VALUES ('$id','$producto->descripcion','$producto->nombre',$producto->precio,$producto->imagen)";
             return BaseDAO::consulta($sql);
         }
 

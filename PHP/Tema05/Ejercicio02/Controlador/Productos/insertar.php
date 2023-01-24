@@ -8,7 +8,7 @@
         $precio = $_POST['precio'];
         $imagen = $_POST['imagen'];
         /* Creando un nuevo objeto del producto. */
-        $p = new Producto(0, $descripcion, $nombre, $precio, $imagen);
+        $p = new Producto($id, $descripcion, $nombre, $precio, $imagen);
         /* Comprobando si el nombre del producto ya existe. */
         if(DAOProducto::buscarProductoNombre($nombre) == null){
             /* Comprobando si el producto se ha insertado correctamente. */
