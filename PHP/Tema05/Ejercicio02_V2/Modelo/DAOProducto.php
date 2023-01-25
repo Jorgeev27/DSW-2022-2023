@@ -65,11 +65,12 @@
             return Producto::getProdStd($resultado->fetchObject());
         }
 
+        
         /**
          * Obtiene una página de productos de la base de datos.
          * @param numPag - Número de página que desea obtener.
          * @param tamPag - Número de productos por página.
-         * @return array - Un array de productos.
+         * @return array Array de productos.
          */
         public static function getPaginaProducto($numPag, $tamPag = 10): array{
             $listaProductos = [];
@@ -77,7 +78,7 @@
             $sql = "SELECT * FROM producto LIMIT $indice,$tamPag";
             $resultado = BaseDAO::consulta($sql);
             while(($producto = $resultado->fetchObject()) != null){
-                $listaProductos[$producto['id']] = Producto::getProdStd($producto);
+                $listaProductos[$producto->id] = Producto::getProdStd($producto);
             }
             return $listaProductos;
         }
