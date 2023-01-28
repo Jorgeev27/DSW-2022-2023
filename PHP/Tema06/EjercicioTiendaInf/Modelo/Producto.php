@@ -1,8 +1,5 @@
 <?php
     declare(strict_types = 1);
-
-use Producto as GlobalProducto;
-
     class Producto{
         /* Creando un array con los atributos de la clase Producto. */
         private $atributos = ['cod'=> "", 'nombre'=> "", 'nombre_corto'=> "", 'descripcion'=> "", 'PVP'=> 0, 'familia'=> ""];
@@ -43,7 +40,6 @@ use Producto as GlobalProducto;
             return $this->atributos[$atributo];
         }
 
-        
         /**
          * Toma un array asociativo y devuelve un objeto Producto.
          * @param array datosProductos - Array asociativo con los datos del producto.
