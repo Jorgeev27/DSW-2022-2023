@@ -1,5 +1,8 @@
 <?php
     declare(strict_types = 1);
+
+use Producto as GlobalProducto;
+
     class Producto{
         /* Creando un array con los atributos de la clase Producto. */
         private $atributos = ['cod'=> "", 'nombre'=> "", 'nombre_corto'=> "", 'descripcion'=> "", 'PVP'=> 0, 'familia'=> ""];
@@ -40,12 +43,28 @@
             return $this->atributos[$atributo];
         }
 
-        public static function getProdFromAssoc(array $datos){
+        
+        /**
+         * Toma un array asociativo y devuelve un objeto Producto.
+         * @param array datosProductos - Array asociativo con los datos del producto.
+         * @return Producto - Objeto de tipo Producto.
+         */
+        public static function getProdFromAssoc(array $datosProductos): Producto{
             //return new Producto($datos['cod'], $datos['nombre'], $datos['nombre_corto'], $datos['descripcion'], $datos['PVP'], $datos['familia']);
             $p = new Producto();
-            foreach($datos as $atributo=>$valor){
-
+            foreach($datosProductos as $atributo=>$valor){
+                $p->$atributo = $valor;
             }
+            return $p;
+        }
+
+        /**
+         * Toma un objeto stdClass y devuelve un objeto Producto.
+         * @param stdClass prodObj - Objeto que contiene la información del producto.
+         * @return Producto - Nuevo objeto Producto.
+         */
+        public static function getProductoFromStd(stdClass $prodObj): Producto{
+            return new Producto($prodObj->cod, $prodObj->nombre, $prodObj->nombre_corto, $prodObj->descripcion, $prodObj->PVP, $prodObj->familia);
         }
     }
 ?>
