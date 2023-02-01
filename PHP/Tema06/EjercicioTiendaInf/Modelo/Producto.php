@@ -7,27 +7,29 @@
         /**
          * Esta función es un constructor de la clase Producto.
          * @param string cod - Código del producto.
-         * @param string nombre - Nombre del producto.
+         * @param string | null nombre - Nombre del producto.
          * @param string nombre_corto - Nombre abreviado del producto.
          * @param string descripcion - Descripción del producto.
-         * @param float PVP - Precio del producto.
+         * @param float | string PVP - Precio del producto.
          * @param string familia - Familia del producto.
          */
-        public function __construct(string $cod = null, string $nombre = "", string $nombre_corto = "", string $descripcion = "", float $PVP = 0, string $familia = ""){
+        public function __construct(string $cod = null, ?string $nombre = "", string $nombre_corto = "", string $descripcion = "", float | string $PVP = 0, string $familia = ""){
+            if($cod != null){
             $this->cod = $cod;
             $this->nombre = $nombre;
             $this->nombre_corto = $nombre_corto;
             $this->descripcion = $descripcion;
-            $this->PVP = $PVP;
+            $this->PVP = (float)$PVP;
             $this->familia = $familia;
+            }
         }
 
         /**
          * La función __set() es un método mágico que le permite establecer el valor de una propiedad que no existe.
          * @param string atributo - Nombre del atributo que desea establecer.
-         * @param string valor - Valor que se asignará al atributo.
+         * @param string | float | null valor - Valor que se asignará al atributo.
          */
-        public function __set(string $atributo, string | float $valor){
+        public function __set(string $atributo, string | float | null $valor){
             $this->atributos[$atributo] = $valor;
         }
 
@@ -56,11 +58,19 @@
 
         /**
          * Toma un objeto stdClass y devuelve un objeto Producto.
-         * @param stdClass prodObj - Objeto que contiene la información del producto.
+         * @param stdClass p - Objeto que contiene la información del producto.
          * @return Producto - Nuevo objeto Producto.
          */
-        public static function getProdFromStd(stdClass $prodObj): Producto{
-            return new Producto($prodObj->cod, $prodObj->nombre, $prodObj->nombre_corto, $prodObj->descripcion, $prodObj->PVP, $prodObj->familia);
+        public static function getProdFromStd(stdClass $p): Producto{
+            return new Producto($p->cod, $p->nombre, $p->nombre_corto, $p->descripcion, $p->PVP, $p->familia);
+        }
+
+        /**
+         * Convierte el objeto a una cadena.
+         * @return Objeto que se está convirtiendo a una cadena.
+         */
+        public function __toString(){
+            return json_encode($this->atributos, JSON_UNESCAPED_UNICODE);
         }
     }
 ?>

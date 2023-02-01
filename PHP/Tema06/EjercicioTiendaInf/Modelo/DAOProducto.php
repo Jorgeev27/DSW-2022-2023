@@ -5,10 +5,21 @@
     require_once("./Ordenador.php");
 
     class DAOProducto{
+        /**
+         * Se conecta a la base de datos y ejecuta la consulta.
+         * @param string sql - Consulta sql a ejecutar.
+         * @return PDOStatement Consulta sql a ejecutar.
+         */
         public static function consulta(string $sql): PDOStatement | int{
             return BasePDO::consulta($sql,"tiendinfor","mysql","tiendinfor","tiendinfor2023");
         }
 
+        /**
+         * Obtiene una página de productos de la base de datos.
+         * @param int numPag - Número de página.
+         * @param int tamPag - Número de productos por página.
+         * @return array Gama de productos.
+         */
         public static function getPaginaProducto(int $numPag, int $tamPag = 10): array{
             $listaProductos = [];
             $indice = $tamPag * ($numPag - 1);
