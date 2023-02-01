@@ -21,7 +21,7 @@ CREATE TABLE familia (
 
 CREATE TABLE producto (
 	cod VARCHAR(12) NOT NULL,
-	nombre VARCHAR(200) NOT NULL,
+	nombre VARCHAR(200) NULL,
 	nombre_corto VARCHAR(50) NOT NULL,
 	descripcion TEXT NULL,
 	PVP DECIMAL(10, 2) NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS ordenador (
-	cod varchar(12)  NOT NULL,
+	codProd varchar(12) NOT NULL,
 	procesador varchar(50) NOT NULL,
 	RAM int(11) NOT NULL COMMENT 'En GB',
 	disco varchar(50) NOT NULL COMMENT 'Indicar numero, tecnología y capacidad',
@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS ordenador (
 	unidadoptica varchar(50) NOT NULL,
 	SO varchar(50) NOT NULL,
 	otros varchar(250) DEFAULT NULL,
-	FOREIGN KEY (cod) REFERENCES producto(cod) ON UPDATE CASCADE, 
-	PRIMARY KEY (cod)
+	FOREIGN KEY (codProd) REFERENCES producto(cod) ON UPDATE CASCADE, 
+	PRIMARY KEY (codProd)
 ) ENGINE=InnoDB;
 
 
@@ -160,6 +160,6 @@ INSERT INTO `usuarios` (`usuario`, `contrasena`) VALUES
 ('pepe', '$2y$10$OnQaCcA/jAcDIp2BpO.e3.GnEqBCgjWNmTVF8lMFBdlmAtLP3JVJG'),
 ('luisa','$2y$10$cgaFTDCABqWpxpyGCDxysukF.YXBCrVpyIym/iYYaky84uaoZFJha');
 
-INSERT INTO ordenador (cod, procesador, RAM, disco, grafica, unidadoptica, SO, otros) VALUES
+INSERT INTO ordenador (codProd, procesador, RAM, disco, grafica, unidadoptica, SO, otros) VALUES
 ('ACERAX3950', 'Intel Core i5-650', 4, '1 disco SATA2 1TB', 'Nvidia GT320 1GB', 'DVD+-R DL 16x', 'Windows 11 Home Premium', NULL),
 ('PBELLI810323', 'Intel Core i3-550', 4, '1 disco SATA2 640GB', 'Nvidia G210M D3 512MB', 'DVD+-R DL', 'Windows 11 Home Premium', 'Equpo integrado con pantalla táctil 16:9 HD 23"');
