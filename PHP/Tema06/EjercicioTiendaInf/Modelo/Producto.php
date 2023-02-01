@@ -59,7 +59,7 @@
          * @param stdClass prodObj - Objeto que contiene la información del producto.
          * @return Producto - Nuevo objeto Producto.
          */
-        public static function getProductoFromStd(stdClass $prodObj): Producto{
+        public static function getProdFromStd(stdClass $prodObj): Producto{
             return new Producto($prodObj->cod, $prodObj->nombre, $prodObj->nombre_corto, $prodObj->descripcion, $prodObj->PVP, $prodObj->familia);
         }
     }
