@@ -1,0 +1,67 @@
+1) Crear una máquina virtual cuyo nombre sea DSWXX-Debian11.4, donde XX es tu número de equipo con 2 dígitos, si por ejemplo tu equipo es el 1, debes poner DSW01-Debian11.4. Tipo Linux, Versión Debian 64bits, con 4GB de RAM, 4/6 núcleos (según los que tenga tu máquina), chipset ICH9, disco duro VMDK dinámico trozeado en 2GB de 120GB, la red debe estar en adaptador puente con la tarjeta de red que está conectada a la red local. Habilitar EFI en Sistema->Placa Base->Características Extendidas.
+
+2) Introducir en el CD virtual de la máquina la iso de Debian11, iniciar en modo live y ejecutar el instalador (Install Debian del Escritorio) e instalar el sistema en el disco duro de la máquina
+
+3) Cuando el instalador pida nombre para ingresar: daw, nombre del equipo: DSWXX (XX tu número de equipo) y  contraseña 123456
+
+4) Instalar php 8.1 en lugar de 7.4 que es la que viene por defecto en debian: 
+    4.1) sudo apt update && sudo apt -y dist-upgrade
+    4.2) sudo reboot
+    4.3) sudo apt update && sudo apt install -y lsb-release ca-certificates apt-transport-https software-properties-common gnupg2
+    4.4) echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/sury-php.list
+    4.5) curl -fsSL  https://packages.sury.org/php/apt.gpg| sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/sury-keyring.gpg
+    4.6) sudo apt update
+    4.7) sudo apt install php8.1
+
+5) Instalar extensiones php:
+    5.1) sudo apt install php8.1-{mysql,xdebug,xml,zip,intl,gd,cli,bz2,curl,mbstring,soap}
+    
+6) NO HACE FALTA YA SE INSTALA COMO DEPENDENCIA DE PHP. Instalar apache2: sudo apt update && sudo apt install apache2
+
+7) Crear la carpeta de trabajo: mkdir /home/daw/PHP
+
+8) Crear un enlace simbólico dentro del raíz de apache2: sudo ln -s /home/daw/PHP /var/www/html/
+
+9) Crear un fichero de prueba para comprobar que funciona bien PHP, fichero /home/daw/PHP/info.php, contenido: <?php phpinfo(); ?>
+
+10) Comprobar que está accesible el servidor, abre el navegador  y en la barra de direcciones teclear:
+http://localhost/PHP/info.php
+
+11) Instalar mariadb: sudo apt update && sudo apt install mariadb-server mariadb-client
+
+12) Instalar servidor de ssh: sudo apt update && sudo apt install ssh
+
+13) Editar (como root) /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+zend_extension=xdebug.so
+xdebug.mode = debug
+xdebug.client_host = localhost
+xdebug.client_port = 9000
+xdebug.start_with_request=yes
+xdebug.idekey = VSCODE
+xdebug.discover_client_host=false
+
+Cada vez que se hagan cambios en los ficheros de configuración de apache2/PHP debe reiniciarse el servidor: sudo systemctl restart apache2
+
+14) Instalar java: sudo apt update && sudo apt install openjdk-17-jdk
+15) Instalar visual code
+    sudo apt update
+    sudo apt install wget gpg
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+    sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+    sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+    rm -f packages.microsoft.gpg
+
+    sudo apt install apt-transport-https
+    sudo apt update
+    sudo apt install code 
+
+16) Añadir a visual code la extensión PHP DEBUG v1.28.0
+Xdebug 7.493.963 (Tamaño)
+Debug support for PHP with Xdebug
+
+17) Configurar launch.json de dicha extensión
+18) Instalar intérprete de PHP PsySH:
+    cd /usr/local/bin
+    sudo wget https://psysh.org/psysh
+    sudo chmod +x psysh
+    psysh
