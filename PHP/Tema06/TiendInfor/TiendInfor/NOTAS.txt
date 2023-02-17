@@ -1,0 +1,45 @@
+Para accder a la tienda -> habrá que iniciar sesión identificándose con 
+contraseña. La contrasela no se guards en la base de datos, sino en un 
+hash de la misma.
+
+una vez identificado el usuario, se mostrará un listado que deberá estar 
+paginado de los prductos disponibles en la tienda.
+
+En caso de que un producto determinado sea un ordenador, debera
+aparecer un enlace en el que al pulsar se mostrará una nueva vista
+con todos los detalles del ordenador. También se rmostrará en esta 
+vista una cesta de la compra, donde se verán los productos que el
+usuario ha ido seleccionando. 
+
+Deberá poder filtrarse los productos que se muestran por familias. 
+
+Se entrega script de creación de base de datos (fchero tineinfor.sql)
+
+Se debe permitir a usuario cerrar la sesión.
+
+que si el user no esta identificado, al entrar a productos que te lleve
+al login. Redireccionamiento desde cualquier pagina aunque no exista.
+
+
+mostrar añadir al carro
+para añadir al carro ver si hay suficiente stock. El stock va asociado a una tienda. 
+Si no controlamos el stock no pasa nada. Lo podemos obviar.
+LO DE ORDENAR NO ES OBLIGATORIO, FILTRAR POR FAMILIAS Si
+
+Desconectar lleva al login
+Si intento acceder sin login, mostrar un error y redireccionar.
+
+Filtrar por familias
+Paginación como en el ejercicio anterior, en la izquierda campos para filtrar
+Campo para filtrar por orden de precio
+checkbox filtrar 
+
+a la funcion getPaginaPoducto tendria que recibir para hacer el order by
+el boton de comprar del carrito obviarlo, ponerlo sin función
+
+
+
+
+
+left join 
+
