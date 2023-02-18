@@ -13,21 +13,21 @@ CREATE TABLE empleados (
     ap2 VARCHAR(255) NULL,
     email VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
-);
+)ENGINE = INNODB;
 CREATE TABLE tareas (
     id INT(10) NOT NULL AUTO_INCREMENT,
     descripcion TEXT NOT NULL,
     fecha_limite DATE NOT NULL,
     completada TINYINT(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
-);
+)ENGINE = INNODB;
 CREATE TABLE empleados_tareas (
     id_empleado INT(10) NOT NULL,
     id_tarea INT(10) NOT NULL,
     PRIMARY KEY (id_empleado, id_tarea),
     FOREIGN KEY (id_empleado) REFERENCES empleados(id),
     FOREIGN KEY (id_tarea) REFERENCES tareas(id)
-);
+)ENGINE = INNODB;
 -- Insertar empleados
 INSERT INTO empleados (id, nombre, ap1, ap2, email) VALUES
     (1,'Cleofás','Méndez','Castro','cleofás.méndez.castro@gmail.com'),
